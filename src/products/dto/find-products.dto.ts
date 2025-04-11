@@ -1,11 +1,23 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsNumber, IsOptional, IsString, IsEnum, IsDate, Min } from 'class-validator';
+import { 
+  IsNumber, 
+  IsOptional, 
+  IsString, 
+  IsEnum, 
+  IsDate, 
+  Min,
+  Max,
+  IsIn,
+  ValidateIf 
+} from 'class-validator';
 
 export enum SortOrder {
   ASC = 'asc',
   DESC = 'desc',
 }
+
+const VALID_SORT_FIELDS = ['price', 'title', 'artist', 'releaseDate', 'stock', 'createdAt'];
 
 export class FindProductsDto {
   @ApiPropertyOptional({
@@ -23,12 +35,14 @@ export class FindProductsDto {
   @ApiPropertyOptional({
     description: 'Number of items per page',
     minimum: 1,
+    maximum: 100,
     default: 10,
     example: 10
   })
   @Type(() => Number)
   @IsNumber()
   @Min(1)
+  @Max(100)
   @IsOptional()
   limit?: number = 10;
 
@@ -58,58 +72,64 @@ export class FindProductsDto {
 
   @ApiPropertyOptional({
     description: 'Minimum price filter',
-    example: 10.99
+    example: 10.99,
+    minimum: 0
   })
   @Type(() => Number)
   @IsNumber()
+  @Min(0)
   @IsOptional()
   minPrice?: number;
 
   @ApiPropertyOptional({
     description: 'Maximum price filter',
-    example: 49.99
+    example: 49.99,
+    minimum: 0
   })
   @Type(() => Number)
   @IsNumber()
+  @Min(0)
+  @ValidateIf((o) => o.minPrice !== undefined)
   @IsOptional()
   maxPrice?: number;
 
   @ApiPropertyOptional({
-    description: 'Filter by release date (from)',
-    example: '2020-01-01'
-  })
-  @Type(() => Date)
-  @IsDate()
-  @IsOptional()
-  releaseDateFrom?: Date;
-
-  @ApiPropertyOptional({
-    description: 'Filter by release date (to)',
-    example: '2023-12-31'
-  })
-  @Type(() => Date)
-  @IsDate()
-  @IsOptional()
-  releaseDateTo?: Date;
-
-  @ApiPropertyOptional({
     description: 'Field to sort by',
-    enum: ['price', 'title', 'artist', 'releaseDate', 'stock', 'createdAt'],
-    default: 'title',
-    example: 'price'
+    enum: VALID_SORT_FIELDS,
+    default: 'title'
   })
   @IsString()
+  @IsIn(VALID_SORT_FIELDS)
   @IsOptional()
   sortBy?: string = 'title';
 
   @ApiPropertyOptional({
     description: 'Sort order',
     enum: SortOrder,
-    default: SortOrder.ASC,
-    example: SortOrder.DESC
+    default: SortOrder.ASC
   })
   @IsEnum(SortOrder)
   @IsOptional()
   sortOrder?: SortOrder = SortOrder.ASC;
+
+  @ApiPropertyOptional({
+    description: 'Filter by release date from',
+    example: '1991-08-12'
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  releaseDateFrom?: Date;
+
+  @ApiPropertyOptional({
+    description: 'Filter by release date to',
+    example: '1991-08-12'
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  releaseDateTo?: Date;
 }
+
+
 

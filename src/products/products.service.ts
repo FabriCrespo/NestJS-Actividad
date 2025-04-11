@@ -61,41 +61,37 @@ export class ProductsService {
       sortOrder = SortOrder.ASC 
     } = params;
     
-    // Asegurarse de que page y limit sean números
     const pageNum = Number(page);
     const limitNum = Number(limit);
     const skip = (pageNum - 1) * limitNum;
 
-    // Construir el objeto where con validaciones
-    const where: any = {
-      AND: []
-    };
+    const where: Prisma.ProductWhereInput = {};
+    const conditions: Prisma.ProductWhereInput[] = [];
 
     if (title) {
-      where.AND.push({ title: { contains: title, mode: 'insensitive' } });
+      conditions.push({ title: { contains: title.toLowerCase() } });
     }
     if (artist) {
-      where.AND.push({ artist: { contains: artist, mode: 'insensitive' } });
+      conditions.push({ artist: { contains: artist.toLowerCase() } });
     }
     if (genre) {
-      where.AND.push({ genre: { contains: genre, mode: 'insensitive' } });
+      conditions.push({ genre: { contains: genre.toLowerCase() } });
     }
     if (minPrice !== undefined) {
-      where.AND.push({ price: { gte: Number(minPrice) } });
+      conditions.push({ price: { gte: Number(minPrice) } });
     }
     if (maxPrice !== undefined) {
-      where.AND.push({ price: { lte: Number(maxPrice) } });
+      conditions.push({ price: { lte: Number(maxPrice) } });
     }
     if (releaseDateFrom) {
-      where.AND.push({ releaseDate: { gte: new Date(releaseDateFrom) } });
+      conditions.push({ releaseDate: { gte: new Date(releaseDateFrom) } });
     }
     if (releaseDateTo) {
-      where.AND.push({ releaseDate: { lte: new Date(releaseDateTo) } });
+      conditions.push({ releaseDate: { lte: new Date(releaseDateTo) } });
     }
 
-    // Si no hay filtros, eliminar el array AND vacío
-    if (where.AND.length === 0) {
-      delete where.AND;
+    if (conditions.length > 0) {
+      where.AND = conditions;
     }
 
     try {
@@ -235,31 +231,7 @@ export class ProductsService {
     });
   }
 
-  async findByArtist(artist: string) {
-    return await this.prismaService.product.findMany({
-      where: {
-        artist: {
-          contains: artist.toLowerCase()
-        }
-      },
-      orderBy: {
-        title: 'asc'
-      }
-    });
-  }
-
-  async findByGenre(genre: string) {
-    return await this.prismaService.product.findMany({
-      where: {
-        genre: {
-          contains: genre.toLowerCase()
-        }
-      },
-      orderBy: {
-        artist: 'asc'
-      }
-    });
-  }
+ 
 
   
 }

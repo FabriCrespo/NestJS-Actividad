@@ -115,15 +115,5 @@ export class ProductsController {
     await this.productsService.updateStock(Number(id), updateStockDto);
   }
 
-  @Get('artists/:artist')
-  @ApiOperation({ summary: 'Find products by artist name' })
-  findByArtist(@Param('artist') artist: string) {
-    return this.productsService.findByArtist(artist);
-  }
 
-  @Get('genres/:genre')
-  @ApiOperation({ summary: 'Find products by genre' })
-  findByGenre(@Param('genre') genre: string) {
-    return this.productsService.findByGenre(genre);
-  }
 }

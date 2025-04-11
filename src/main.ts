@@ -7,12 +7,26 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Products API')
-    .setDescription('The products API description')
+    .setDescription('API documentation for the Products application')
     .setVersion('1.0')
-    .addTag('products')
+    .addTag('auth', 'Authentication endpoints')
+    .addTag('users', 'User management endpoints')
+    .addTag('products', 'Product management endpoints')
+    .addSecurityRequirements('bearer')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        description: 'Enter JWT token',
+        in: 'header',
+      },
+      'bearer'
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(3000);
 }
 bootstrap();

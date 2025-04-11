@@ -1,0 +1,82 @@
+[
+  {
+    "title": "The Chronic",
+    "artist": "Dr. Dre",
+    "genre": "Hip Hop",
+    "releaseDate": "1992-12-15",
+    "price": 29.99,
+    "stock": 15
+  },
+  {
+    "title": "Illmatic",
+    "artist": "Nas",
+    "genre": "Hip Hop",
+    "releaseDate": "1994-04-19",
+    "price": 24.99,
+    "stock": 20
+  },
+  {
+    "title": "All Eyez on Me",
+    "artist": "2Pac",
+    "genre": "Hip Hop",
+    "releaseDate": "1996-02-13",
+    "price": 34.99,
+    "stock": 10
+  },
+  {
+    "title": "Ready to Die",
+    "artist": "The Notorious B.I.G.",
+    "genre": "Hip Hop",
+    "releaseDate": "1994-09-13",
+    "price": 29.99,
+    "stock": 12
+  },
+  {
+    "title": "The Marshall Mathers LP",
+    "artist": "Eminem",
+    "genre": "Hip Hop",
+    "releaseDate": "2000-05-23",
+    "price": 27.99,
+    "stock": 25
+  },
+  {
+    "title": "The Blueprint",
+    "artist": "Jay-Z",
+    "genre": "Hip Hop",
+    "releaseDate": "2001-09-11",
+    "price": 26.99,
+    "stock": 18
+  },
+  {
+    "title": "Enter the Wu-Tang (36 Chambers)",
+    "artist": "Wu-Tang Clan",
+    "genre": "Hip Hop",
+    "releaseDate": "1993-11-09",
+    "price": 28.99,
+    "stock": 15
+  },
+  {
+    "title": "The Low End Theory",
+    "artist": "A Tribe Called Quest",
+    "genre": "Hip Hop",
+    "releaseDate": "1991-09-24",
+    "price": 25.99,
+    "stock": 14
+  },
+  {
+    "title": "Straight Outta Compton",
+    "artist": "N.W.A",
+    "genre": "Hip Hop",
+    "releaseDate": "1988-08-08",
+    "price": 32.99,
+    "stock": 10
+  },
+  {
+    "title": "Midnight Marauders",
+    "artist": "A Tribe Called Quest",
+    "genre": "Hip Hop",
+    "releaseDate": "1993-11-09",
+    "price": 26.99,
+    "stock": 16
+  }
+]

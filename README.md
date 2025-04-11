@@ -1,28 +1,31 @@
-# 🎵 Vinyl Records Store API
+# 🎵 API de Tienda de Vinilos
 
-A modern REST API for managing a vinyl records store, built with NestJS and Prisma.
+Una API REST moderna para gestionar una tienda de vinilos, construida con NestJS y Prisma.
 
-## 🎯 Business Overview
+## 🎥 Demo del Proyecto
+[![Demo de la API de Vinilos](https://img.youtube.com/vi/fX_e73kXg6U/0.jpg)](https://www.youtube.com/watch?v=fX_e73kXg6U)
 
-This API powers a digital vinyl records store platform, allowing users to:
-- Browse and search through a catalog of vinyl records
-- Filter products by artist, genre, price range, and release date
-- Manage inventory with real-time stock tracking
-- Secure authentication for staff members
-- Comprehensive product management system
+## 🎯 Descripción del Negocio
 
-## 🛠 Tech Stack
+Esta API impulsa una plataforma digital de venta de vinilos, permitiendo a los usuarios:
+- Navegar y buscar en un catálogo de discos de vinilo
+- Filtrar productos por artista, género, rango de precio y fecha de lanzamiento
+- Gestionar inventario con seguimiento de stock en tiempo real
+- Autenticación segura para miembros del personal
+- Sistema integral de gestión de productos
 
-- **Framework**: [NestJS](https://nestjs.com/) - A progressive Node.js framework
-- **Database**: SQLite with [Prisma](https://www.prisma.io/) ORM
-- **Authentication**: JWT-based auth system
-- **Documentation**: OpenAPI (Swagger)
+## 🛠 Stack Tecnológico
+
+- **Framework**: [NestJS](https://nestjs.com/) - Un framework progresivo de Node.js
+- **Base de Datos**: SQLite con [Prisma](https://www.prisma.io/) ORM
+- **Autenticación**: Sistema basado en JWT
+- **Documentación**: OpenAPI (Swagger)
 - **Testing**: Jest
-- **Language**: TypeScript
+- **Lenguaje**: TypeScript
 
-## 📊 Database Schema
+## 📊 Esquema de Base de Datos
 
-### Product Model
+### Modelo de Producto
 ```prisma
 model Product {
   id          Int       @id @default(autoincrement())
@@ -37,7 +40,7 @@ model Product {
 }
 ```
 
-### User Model
+### Modelo de Usuario
 ```prisma
 model User {
   id        Int      @id @default(autoincrement())
@@ -49,62 +52,62 @@ model User {
 }
 ```
 
-## 🚀 Getting Started
+## 🚀 Comenzando
 
-1. **Clone the repository**
+1. **Clonar el repositorio**
 ```bash
 git clone <repository-url>
 cd vinyl-store-api
 ```
 
-2. **Install dependencies**
+2. **Instalar dependencias**
 ```bash
 npm install
 ```
 
-3. **Set up environment variables**
-Create a `.env` file:
+3. **Configurar variables de entorno**
+Crear un archivo `.env`:
 ```env
 DATABASE_URL="file:./dev.db"
-JWT_SECRET="your-secret-key"
+JWT_SECRET="tu-clave-secreta"
 ```
 
-4. **Run database migrations**
+4. **Ejecutar migraciones de base de datos**
 ```bash
 npx prisma migrate dev
 ```
 
-5. **Start the development server**
+5. **Iniciar el servidor de desarrollo**
 ```bash
 npm run start:dev
 ```
 
-## 🔑 API Authentication
+## 🔑 Autenticación de la API
 
-The API uses JWT Bearer tokens for authentication. To access protected endpoints:
+La API utiliza tokens JWT Bearer para la autenticación. Para acceder a los endpoints protegidos:
 
-1. Register a new user or login with existing credentials
-2. Use the received JWT token in the Authorization header:
+1. Registra un nuevo usuario o inicia sesión con credenciales existentes
+2. Utiliza el token JWT recibido en el encabezado de Autorización:
 ```
-Authorization: Bearer <your-jwt-token>
+Authorization: Bearer <tu-token-jwt>
 ```
 
-## 📡 API Endpoints
+## 📡 Endpoints de la API
 
-### Products
-- `GET /api/products` - List all products (with pagination and filters)
-- `GET /api/products/:id` - Get single product
-- `POST /api/products` - Create new product
-- `PATCH /api/products/:id` - Update product
-- `DELETE /api/products/:id` - Delete product
+### Productos
+- `GET /api/products` - Listar todos los productos (con paginación y filtros)
+- `GET /api/products/:id` - Obtener un producto específico
+- `POST /api/products` - Crear nuevo producto
+- `PATCH /api/products/:id` - Actualizar producto
+- `DELETE /api/products/:id` - Eliminar producto
 
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
+### Autenticación
+- `POST /api/auth/register` - Registrar nuevo usuario
+- `POST /api/auth/login` - Iniciar sesión
 
-## 📝 API Documentation
+## 📝 Documentación de la API
 
-Access the full API documentation at:
+Accede a la documentación completa de la API en:
 ```
 http://localhost:3000/api
 ```
@@ -112,35 +115,35 @@ http://localhost:3000/api
 ## 🧪 Testing
 
 ```bash
-# Run unit tests
+# Ejecutar pruebas unitarias
 npm run test
 
-# Run e2e tests
+# Ejecutar pruebas e2e
 npm run test:e2e
 
-# Get test coverage
+# Obtener cobertura de pruebas
 npm run test:cov
 ```
 
-## 🔍 Features
+## 🔍 Características
 
-- **Advanced Filtering**: Search products by multiple criteria
-- **Pagination**: Efficient data loading with page-based pagination
-- **Sorting**: Flexible sorting options for product listings
-- **Stock Management**: Real-time inventory tracking
-- **Input Validation**: Comprehensive DTO validation
-- **Error Handling**: Robust error management system
-- **API Documentation**: Auto-generated Swagger documentation
-- **Security**: JWT-based authentication and route protection
+- **Filtrado Avanzado**: Búsqueda de productos por múltiples criterios
+- **Paginación**: Carga eficiente de datos con paginación
+- **Ordenamiento**: Opciones flexibles de ordenamiento para listados
+- **Gestión de Stock**: Seguimiento de inventario en tiempo real
+- **Validación de Entrada**: Validación integral de DTOs
+- **Manejo de Errores**: Sistema robusto de gestión de errores
+- **Documentación API**: Documentación Swagger autogenerada
+- **Seguridad**: Autenticación basada en JWT y protección de rutas
 
-## 🤝 Contributing
+## 🤝 Contribuir
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. Haz un fork del repositorio
+2. Crea tu rama de características (`git checkout -b feature/caracteristica-increible`)
+3. Haz commit de tus cambios (`git commit -m 'Añadir característica increíble'`)
+4. Haz push a la rama (`git push origin feature/caracteristica-increible`)
+5. Abre un Pull Request
 
-## 📄 License
+## 📄 Licencia
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
